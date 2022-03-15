@@ -4,20 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+
     <title>
-        Blog Programmation - {% block titre %} {% endblock %}
+        Bucket - {% block titre %} {% endblock %}
     </title>
 </head>
 <body>
 <div class="container">
-    <header><h1>Blog</h1></header>
-    <nav>Nav</nav>
+    <div class="header">
+    <img src="{{ asset('/img/logo.png') }}" alt="Symfony" />
+    <header><h1>Bucket of water</h1></header>
+    </div>
+    <nav>Home | Accueil | Contact</nav>
     <main>
         {% block contenu %}
         {% endblock %}
     </main>
     <footer>
+        <img src="{{ asset('/img/favicon.png') }}" alt="Symfony" />
         Blog &copy; {{ "now"|date("Y") }}
     </footer>
 </div>
