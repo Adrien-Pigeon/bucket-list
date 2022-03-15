@@ -1,3 +1,14 @@
 body{
-    background-color: rgb(211, 211, 211);
+    background-color: rgba(216,224,187,1);
+    margin-top: 5%;
+}
+.header{
+
+}
+
+.navbar{
+    margin-left: -1.5rem;
+    justify-content: space-around;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 }
