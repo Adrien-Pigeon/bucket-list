@@ -31,7 +31,7 @@ class ClientsController extends AbstractController
            $client->setPrenom($nom)
                ->setNom($prenom)
                ->setAge($age)
-               ->setDateNaissance(new \DateTime($dateReservation));
+               ->setDateReservation(new \DateTime($dateReservation));
 
            //AJOUT DANS BDD
            $em->persist($client);
