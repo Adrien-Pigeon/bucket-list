@@ -13,7 +13,7 @@ class BucketController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('bucket/index.html.twig', [
+        return $this->render('bucket/reservation.html.twig', [
             'controller_name' => 'BucketController',
         ]);
     }
@@ -23,7 +23,7 @@ class BucketController extends AbstractController
      */
     public function aboutUs(): Response
     {
-        return $this->render('main/about-us.html.twig', [
+        return $this->render('main/offres.html.twig', [
             'controller_name' => 'BucketController',
         ]);
     }

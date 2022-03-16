@@ -13,7 +13,7 @@ class CalculatriceController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('calculatrice/index.html.twig', [
+        return $this->render('calculatrice/reservation.html.twig', [
             'controller_name' => 'CalculatriceController',
         ]);
     }

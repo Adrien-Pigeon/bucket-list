@@ -39,7 +39,7 @@ class ClientsController extends AbstractController
 
        }
 
-        return $this->render("clients/index.html.twig");
+        return $this->render("clients/reservation.html.twig");
 
     }
 
