@@ -35,7 +35,7 @@ class Clients
     /**
      * @ORM\Column(type="date")
      */
-    private $dateNaissance;
+    private $dateReservation;
 
     public function getId(): ?int
     {
@@ -78,14 +78,14 @@ class Clients
         return $this;
     }
 
-    public function getDateNaissance(): ?\DateTimeInterface
+    public function getDateReservation(): ?\DateTimeInterface
     {
-        return $this->dateNaissance;
+        return $this->dateReservation;
     }
 
-    public function setDateNaissance(\DateTimeInterface $dateNaissance): self
+    public function setDateReservation(\DateTimeInterface $dateReservation): self
     {
-        $this->dateNaissance = $dateNaissance;
+        $this->dateReservation = $dateReservation;
 
         return $this;
     }

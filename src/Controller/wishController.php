@@ -9,16 +9,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class wishController extends AbstractController
 {
     /**
-     * @Route("/list", name="app_list")
-     */
-    public function list(): Response
-    {
-        return $this->render('wish/list.html.twig', [
-            'controller_name' => 'wishController',
-        ]);
-    }
-
-    /**
      * @Route("/detail", name="app_detail")
      */
     public function detail(): Response

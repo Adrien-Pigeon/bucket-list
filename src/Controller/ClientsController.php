@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Clients;
+use App\Repository\ClientsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use http\Client;
 
@@ -23,14 +24,14 @@ class ClientsController extends AbstractController
            $nom = $request->request->get("nom");
            $prenom = $request->request->get("prenom");
            $age = $request->request->get("age");
-           $dateNaissance = $request->request->get("dateNaissance");
+           $dateReservation = $request->request->get("dateReservation");
 
            // CREATION DE L'OBJET
            $client = new Clients();
            $client->setPrenom($nom)
                ->setNom($prenom)
                ->setAge($age)
-               ->setDateNaissance(new \DateTime($dateNaissance));
+               ->setDateNaissance(new \DateTime($dateReservation));
 
            //AJOUT DANS BDD
            $em->persist($client);
@@ -49,6 +50,6 @@ class ClientsController extends AbstractController
     {
         $clients = $clientRepo->findAll();
         dump($clients);
-        return $this->render("clients/listeClient.html.twig");
+        return $this->render("clients/listeClient.html.twig",compact("clients"));
     }
 }
