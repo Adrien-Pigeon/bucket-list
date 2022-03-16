@@ -1,0 +1,35 @@
+{% extends "default.html.twig" %}
+
+{% block titre %}Inscriptiont{% endblock %}
+
+{% block contenu5 %}
+
+    <h1>Inscription </h1>
+
+    <div class="row">
+        <form action="/clients" method="post">
+
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom :</label>
+                <input type="text" class="form-control" name="nom" id="nom" placeholder="ex : Dupont" required>
+            </div>
+            <div class="mb-3">
+                <label for="prenom" class="form-label">Prenom :</label>
+                <input type="text" class="form-control" name="prenom" id="prenom" placeholder="ex : Adrien" required>
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Age :</label>
+                <input type="number" class="form-control" name="age" id="age" placeholder="ex : 45" required>
+            </div>
+            <div class="mb-3">
+                <label for="dateNaissance" class="form-label">Date de Naissance :</label>
+                <input type="date" class="form-control" name="dateNaissance" id="dateNaissance" placeholder="ex : 06/02/1998" required>
+            </div>
+
+            <button type="submit" class="btn btn-success">Ajouter</button>
+
+        </form>
+
+    </div>
+
+{% endblock %}
