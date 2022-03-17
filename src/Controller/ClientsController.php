@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Clients;
+use App\Form\ClientType;
 use App\Repository\ClientsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use http\Client;
@@ -11,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\FormTypeInterface;
 
 class ClientsController extends AbstractController
 {
@@ -19,27 +21,41 @@ class ClientsController extends AbstractController
      */
     public function index(EntityManagerInterface $em, Request $request): Response // OBTENIR MANAGER INTERFACE
     {
-       if ($request->getMethod()=="POST") {
+        // CREATION DE L'OBJET
+        $client = new Clients();
 
-           $nom = $request->request->get("nom");
-           $prenom = $request->request->get("prenom");
-           $age = $request->request->get("age");
-           $dateReservation = $request->request->get("dateReservation");
+        // CREATION FORMULAIRE
+        $formClient = $this->createForm(ClientType::class, $client);
 
-           // CREATION DE L'OBJET
-           $client = new Clients();
-           $client->setPrenom($nom)
-               ->setNom($prenom)
-               ->setAge($age)
-               ->setDateReservation(new \DateTime($dateReservation));
+        // AJOUT DONNEES
+        $formClient->handleRequest($request);
 
-           //AJOUT DANS BDD
-           $em->persist($client);
-           $em->flush();
+        if ($formClient->isSubmitted()) {
 
-       }
+            // AJOUT DANS BDD
+            $em->persist($client);
+            $em->flush();
 
-        return $this->render("clients/reservation.html.twig");
+            // AUTRE VERSION CREATION DE L'OBJET
+//          $client = new Clients();
+//           $client->setPrenom($nom)
+//              ->setNom($prenom)
+//               ->setAge($age)
+//              ->setDateReservation(new \DateTime($dateReservation));
+
+            // ANCIEN AJOUT DONNEES
+
+//          $nom = $request->request->get("nom");
+//          $prenom = $request->request->get("prenom");
+//          $age = $request->request->get("age");
+//          $dateReservation = $request->request->get("dateReservation");
+
+
+        }
+
+        return $this->render("clients/reservation.html.twig", [
+            'formClient' => $formClient->createView()
+        ]);
 
     }
 
@@ -49,7 +65,8 @@ class ClientsController extends AbstractController
     public function listeClient(ClientsRepository $clientRepo): Response
     {
         $clients = $clientRepo->findAll();
+        // $clients = $clientRepo->findBy(array('id'=>1)); // SELECT BY ID
         dump($clients);
-        return $this->render("clients/listeClient.html.twig",compact("clients"));
+        return $this->render("clients/listeClient.html.twig", compact("clients"));
     }
 }

@@ -1,35 +1,66 @@
 {% extends "default.html.twig" %}
 
-{% block titre %}Inscriptiont{% endblock %}
+{% block titre %}Reservation{% endblock %}
 
 {% block contenu5 %}
 
-    <h1>Réservation </h1>
+    <div>
 
-    <div class="row">
-        <form action="/clients" method="post">
-
-            <div class="mb-3">
-                <label for="nom" class="form-label">Nom :</label>
-                <input type="text" class="form-control" name="nom" id="nom" placeholder="ex : Dupont" required>
-            </div>
-            <div class="mb-3">
-                <label for="prenom" class="form-label">Prenom :</label>
-                <input type="text" class="form-control" name="prenom" id="prenom" placeholder="ex : Adrien" required>
-            </div>
-            <div class="mb-3">
-                <label for="age" class="form-label">Age :</label>
-                <input type="number" class="form-control" name="age" id="age" placeholder="ex : 45" required>
-            </div>
-            <div class="mb-3">
-                <label for="dateReservation" class="form-label">Date de Reservation :</label>
-                <input type="date" class="form-control" name="dateReservation" id="dateReservation" placeholder="ex : 06/02/1998" required>
-            </div>
-
-            <button type="submit" class="btn btn-success">Ajouter</button>
-
-        </form>
+        <h1>Réservation </h1>
 
     </div>
+
+    <div class="row">
+
+        {{ form_start(formClient) }}
+
+        <div class="group1">
+            {{ form_label(formClient.prenom) }}
+            {{ form_widget(formClient.prenom) }}
+            {{ form_errors(formClient.prenom) }}
+        </div>
+
+        <div class="group2">
+            {{ form_label(formClient.nom) }}
+            {{ form_widget(formClient.nom) }}
+            {{ form_errors(formClient.nom) }}
+        </div>
+
+        <label for="{{ field_name(formClient.age) }}">Age</label>
+        <input type="number" id="{{ field_name(formClient.age) }}" name="{{ field_name(formClient.age) }}">
+
+
+
+        {{ form_end(formClient) }}
+    </div>
+
+
+    {#    <h1>Réservation </h1> #}
+
+    {#    <div class="row"> #}
+    {#        <form action="/clients" method="post"> #}
+
+    {#            <div class="mb-3"> #}
+    {#                <label for="nom" class="form-label">Nom :</label> #}
+    {#                <input type="text" class="form-control" name="nom" id="nom" placeholder="ex : Dupont" required> #}
+    {#            </div> #}
+    {#            <div class="mb-3"> #}
+    {#                <label for="prenom" class="form-label">Prenom :</label> #}
+    {#                <input type="text" class="form-control" name="prenom" id="prenom" placeholder="ex : Adrien" required> #}
+    {#            </div> #}
+    {#            <div class="mb-3"> #}
+    {#                <label for="age" class="form-label">Age :</label> #}
+    {#                <input type="number" class="form-control" name="age" id="age" placeholder="ex : 45" required> #}
+    {#            </div> #}
+    {#            <div class="mb-3"> #}
+    {#                <label for="dateReservation" class="form-label">Date de Reservation :</label> #}
+    {#                <input type="date" class="form-control" name="dateReservation" id="dateReservation" placeholder="ex : 06/02/1998" required> #}
+    {#            </div> #}
+
+    {#            <button type="submit" class="btn btn-success">Ajouter</button> #}
+
+    {#        </form> #}
+
+    {#    </div> #}
 
 {% endblock %}
