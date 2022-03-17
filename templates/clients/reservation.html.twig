@@ -10,26 +10,41 @@
 
     </div>
 
-    <div class="row">
+    <div class="row form">
 
         {{ form_start(formClient) }}
 
-        <div class="group1">
+        <div class="group1 mb-3">
             {{ form_label(formClient.prenom) }}
             {{ form_widget(formClient.prenom) }}
             {{ form_errors(formClient.prenom) }}
         </div>
 
-        <div class="group2">
+        <div class="group2 mb-3">
             {{ form_label(formClient.nom) }}
             {{ form_widget(formClient.nom) }}
             {{ form_errors(formClient.nom) }}
         </div>
 
-        <label for="{{ field_name(formClient.age) }}">Age</label>
-        <input type="number" id="{{ field_name(formClient.age) }}" name="{{ field_name(formClient.age) }}">
+        <label for="{{ field_name(formClient.age) }}" class="form-label">Age :</label>
+        <input type="number"  id="{{ field_name(formClient.age) }}" name="{{ field_name(formClient.age) }}">
 
+        <div class="group3 mb-3">
+            {{ form_label(formClient.dateReservation) }}
+            {{ form_widget(formClient.dateReservation) }}
+            {{ form_errors(formClient.dateReservation) }}
+        </div>
 
+        <div class="button mb-3">
+            {{ form_label(formClient.ajouter) }}
+            {{ form_widget(formClient.ajouter) }}
+
+        </div>
+
+        <div class="button mb-3">
+            {{ form_label(formClient.effacer) }}
+            {{ form_widget(formClient.effacer) }}
+        </div>
 
         {{ form_end(formClient) }}
     </div>

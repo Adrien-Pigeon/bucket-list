@@ -35,6 +35,8 @@ class ClientsController extends AbstractController
             // AJOUT DANS BDD
             $em->persist($client);
             $em->flush();
+            $this->addFlash("Succes","Reservation Faite !");
+            return $this->redirectToRoute('app-resultat');
 
             // AUTRE VERSION CREATION DE L'OBJET
 //          $client = new Clients();
@@ -68,5 +70,12 @@ class ClientsController extends AbstractController
         // $clients = $clientRepo->findBy(array('id'=>1)); // SELECT BY ID
         dump($clients);
         return $this->render("clients/listeClient.html.twig", compact("clients"));
+    }
+
+    /**
+     * @Route("/resultat",name="app-resultat")
+     */
+    public function resultat(ClientsRepository $clientRepo): Response{
+        return $this->render("clients/resultat.html.twig");
     }
 }

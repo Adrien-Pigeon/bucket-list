@@ -22,9 +22,9 @@ class ClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('prenom',TextType::class,["label"=>"Prenom"])
-            ->add('nom',TextType::class,["label"=>"Nom"])
-            ->add('age',IntegerType::class,["label"=>"Age"])
+            ->add('prenom',TextType::class,["label"=>"Prenom :"])
+            ->add('nom',TextType::class,["label"=>"Nom :"])
+            ->add('age',IntegerType::class,["label"=>"Age :"])
             ->add('dateReservation',DateType::class,["label"=>"Date de Reservation"])
             ->add('ajouter',SubmitType::class,["label"=>"Ajouter Reservation"])
             ->add('effacer',ResetType::class,["label"=>"Effacer"])

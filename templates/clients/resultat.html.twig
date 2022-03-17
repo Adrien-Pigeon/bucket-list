@@ -1,0 +1,17 @@
+{% extends "default.html.twig" %}
+
+{% block titre %}Resultat{% endblock %}
+
+{% block contenu7 %}
+
+    {% for label,messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <p>Vous pouvez revoir votre réservation dans l'onglet "Liste Réservation"</p>
+
+{% endblock %}
