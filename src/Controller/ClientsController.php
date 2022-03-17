@@ -30,7 +30,7 @@ class ClientsController extends AbstractController
         // AJOUT DONNEES
         $formClient->handleRequest($request);
 
-        if ($formClient->isSubmitted()) {
+        if ($formClient->isSubmitted() && $formClient->isValid()) {
 
             // AJOUT DANS BDD
             $em->persist($client);
