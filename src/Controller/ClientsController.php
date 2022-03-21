@@ -78,4 +78,20 @@ class ClientsController extends AbstractController
     public function resultat(ClientsRepository $clientRepo): Response{
         return $this->render("clients/resultat.html.twig");
     }
+
+    /**
+     * @Route("/supp", name="app_supp_client")
+     */
+    public function removeClient(ClientsRepository $clientRepo,Request $request):Response
+    {
+        $submittedToken = $request->request->get("token");
+
+        if($this->isCsrfTokenValid('delete-item', $submittedToken)){
+            $client = $clientRepo->find($request->request->get("id"));
+            $clientRepo->remove($client);
+        }
+
+        return $this->redirectToRoute("app-listeClient");
+       // return $this->json($this->isCsrfTokenValid('delete-item', $submittedToken)); RETURN JQUERY
+    }
 }

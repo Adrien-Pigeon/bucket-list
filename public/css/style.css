@@ -5,12 +5,21 @@ body{
     background-color: rgba(243,231,209,1);
     margin-top: 5%;
     font-family: 'Pacifico', cursive;
+    color: #4169e1;
+}
+
+.texte{
+    color: black;
 }
 
 .title{
     display: flex;
     font-family: 'Pacifico', cursive;
 
+}
+
+.copy{
+    color: black;
 }
 
 a{
@@ -30,6 +39,7 @@ main{
     margin-top: 10%;
     font-family: 'Pacifico', cursive;
     min-height: 60vh;
+
 }
 
 footer{
@@ -57,7 +67,7 @@ footer{
 
     width: 200px;
 }
-
-.group3{
-
+.btnForm{
+    background-color: #f3e7d1;
+    color: blue;
 }

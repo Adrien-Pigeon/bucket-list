@@ -39,6 +39,12 @@ class Clients
      */
     private $dateReservation;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Offres::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Offre;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -88,6 +94,18 @@ class Clients
     public function setDateReservation(\DateTimeInterface $dateReservation): self
     {
         $this->dateReservation = $dateReservation;
+
+        return $this;
+    }
+
+    public function getOffre(): ?Offres
+    {
+        return $this->Offre;
+    }
+
+    public function setOffre(?Offres $Offre): self
+    {
+        $this->Offre = $Offre;
 
         return $this;
     }

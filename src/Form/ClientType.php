@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Clients;
 
+use App\Entity\Offres;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -22,13 +24,13 @@ class ClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('prenom',TextType::class,["label"=>"Prenom :"])
-            ->add('nom',TextType::class,["label"=>"Nom :"])
-            ->add('age',IntegerType::class,["label"=>"Age :"])
-            ->add('dateReservation',DateType::class,["label"=>"Date de Reservation"])
-            ->add('ajouter',SubmitType::class,["label"=>"Ajouter Reservation"])
-            ->add('effacer',ResetType::class,["label"=>"Effacer"])
-        ;
+            ->add('prenom', TextType::class, ["label" => "Prenom :"])
+            ->add('nom', TextType::class, ["label" => "Nom :"])
+            ->add('age', IntegerType::class, ["label" => "Age :"])
+            ->add('dateReservation', DateType::class, ["label" => "Date de Reservation", "widget" => "single_text"])
+            ->add('Offre', EntityType::class, ['class' => Offres::class, 'choice_label' => 'nom', "label" => "Choisir votre offre"])
+            ->add('ajouter', SubmitType::class, ["label" => "Ajouter Reservation"])
+            ->add('effacer', ResetType::class, ["label" => "Effacer"]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
