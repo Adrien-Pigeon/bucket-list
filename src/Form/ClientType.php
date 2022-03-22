@@ -27,6 +27,7 @@ class ClientType extends AbstractType
             ->add('prenom', TextType::class, ["label" => "Prenom :"])
             ->add('nom', TextType::class, ["label" => "Nom :"])
             ->add('age', IntegerType::class, ["label" => "Age :"])
+            // JOINTURE FORM Offre.id to Clients
             ->add('dateReservation', DateType::class, ["label" => "Date de Reservation", "widget" => "single_text"])
             ->add('Offre', EntityType::class, ['class' => Offres::class, 'choice_label' => 'nom', "label" => "Choisir votre offre"])
             ->add('ajouter', SubmitType::class, ["label" => "Ajouter Reservation"])

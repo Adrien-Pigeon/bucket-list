@@ -71,3 +71,10 @@ footer{
     background-color: #f3e7d1;
     color: blue;
 }
+
+.reservation{
+    border-radius: 56px;
+    background: linear-gradient(145deg, #dbd0bc, #fff7e0);
+    box-shadow:  22px 22px 44px #615c54,
+    -22px -22px 44px #ffffff;
+}
