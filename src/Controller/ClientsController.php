@@ -21,31 +21,34 @@ class ClientsController extends AbstractController
      */
     public function index(EntityManagerInterface $em, Request $request): Response // OBTENIR MANAGER INTERFACE
     {
-        // CREATION DE L'OBJET
-        $client = new Clients();
+        if ($this->isGranted("ROLE_USER")) {
 
-        // CREATION FORMULAIRE
-        $formClient = $this->createForm(ClientType::class, $client);
 
-        // AJOUT DONNEES
-        $formClient->handleRequest($request);
+            // CREATION DE L'OBJET
+            $client = new Clients();
 
-        if ($formClient->isSubmitted() && $formClient->isValid()) {
+            // CREATION FORMULAIRE
+            $formClient = $this->createForm(ClientType::class, $client);
 
-            // AJOUT DANS BDD
-            $em->persist($client);
-            $em->flush();
-            $this->addFlash("Succes","Reservation Faite !");
-            return $this->redirectToRoute('app-resultat');
+            // AJOUT DONNEES
+            $formClient->handleRequest($request);
 
-            // AUTRE VERSION CREATION DE L'OBJET
+            if ($formClient->isSubmitted() && $formClient->isValid()) {
+
+                // AJOUT DANS BDD
+                $em->persist($client);
+                $em->flush();
+                $this->addFlash("Succes","Reservation Faite !");
+                return $this->redirectToRoute('app-resultat');
+
+                // AUTRE VERSION CREATION DE L'OBJET
 //          $client = new Clients();
 //           $client->setPrenom($nom)
 //              ->setNom($prenom)
 //               ->setAge($age)
 //              ->setDateReservation(new \DateTime($dateReservation));
 
-            // ANCIEN AJOUT DONNEES
+                // ANCIEN AJOUT DONNEES
 
 //          $nom = $request->request->get("nom");
 //          $prenom = $request->request->get("prenom");
@@ -53,11 +56,18 @@ class ClientsController extends AbstractController
 //          $dateReservation = $request->request->get("dateReservation");
 
 
+            }
+
+            return $this->render("clients/reservation.html.twig", [
+                'formClient' => $formClient->createView()
+            ]);
+        }else{
+            return $this->redirectToRoute("app_login");
         }
 
-        return $this->render("clients/reservation.html.twig", [
-            'formClient' => $formClient->createView()
-        ]);
+
+
+
 
     }
 
@@ -66,10 +76,14 @@ class ClientsController extends AbstractController
      */
     public function listeClient(ClientsRepository $clientRepo): Response
     {
-        $clients = $clientRepo->findAll();
-        // $clients = $clientRepo->findBy(array('id'=>1)); // SELECT BY ID
-        dump($clients);
-        return $this->render("clients/listeClient.html.twig", compact("clients"));
+        if ($this->isGranted("ROLE_USER")){
+
+            $clients = $clientRepo->findAll();
+            // $clients = $clientRepo->findBy(array('id'=>1)); // SELECT BY ID
+            dump($clients);
+            return $this->render("clients/listeClient.html.twig", compact("clients"));
+        }
+        return $this->redirectToRoute("app_login");
     }
 
     /**

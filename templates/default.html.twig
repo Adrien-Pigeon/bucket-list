@@ -26,14 +26,22 @@
         <img src="{{ asset('/img/logo.png') }}" alt="Symfony"/>
         <h1>Bucket-Voyance</h1>
     </div>
+    <nav class="navigation">
+        <a href="{{ path("app_login") }}">Connexion</a>
+        <a href="{{ path("app_register") }}">Inscription</a>
+        <a href="{{ path("app_logout") }}">Deconnexion</a>
+    </nav>
     <header>
 
         <nav class="navbar navbar-light" style="background-color: rgba(216,224,187,1)">
             <a href="{{ path("app_bucket") }}">Accueil</a>
             <a href="{{ path("app_aboutUs") }}">Offres </a>
-            <a href="{{ path("app-listeClient") }}">Liste Réservation</a>
             <a href="{{ path("app_detail") }}">Detail</a>
+
+            <a href="{{ path("app-listeClient") }}">Liste Réservation</a>
             <a href="{{ path("app_clients") }}">Réservation Séance</a>
+
+
         </nav>
 
     </header>
@@ -54,6 +62,10 @@
             {% block contenu6 %}
             {% endblock %}
             {% block contenu7 %}
+            {% endblock %}
+            {% block contenu8 %}
+            {% endblock %}
+            {% block contenu9 %}
             {% endblock %}
 
         </main>
