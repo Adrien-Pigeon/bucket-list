@@ -13,7 +13,7 @@ class wishController extends AbstractController
      */
     public function detail(): Response
     {
-        return $this->render('wish/detail.html.twig', [
+        return $this->render('main/detail.html.twig', [
             'controller_name' => 'wishController',
         ]);
     }
