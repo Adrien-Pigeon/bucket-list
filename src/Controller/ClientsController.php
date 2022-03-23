@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Clients;
 use App\Form\ClientType;
 use App\Repository\ClientsRepository;
+use App\Service\Censurator;
 use Doctrine\ORM\EntityManagerInterface;
 use http\Client;
 
@@ -19,8 +20,9 @@ class ClientsController extends AbstractController
     /**
      * @Route("/clients", name="app_clients")
      */
-    public function index(EntityManagerInterface $em, Request $request): Response // OBTENIR MANAGER INTERFACE
+    public function index(Censurator $censure, EntityManagerInterface $em, Request $request): Response // OBTENIR MANAGER INTERFACE
     {
+
         if ($this->isGranted("ROLE_USER")) {
 
 
@@ -36,6 +38,28 @@ class ClientsController extends AbstractController
             if ($formClient->isSubmitted() && $formClient->isValid()) {
 
                 // AJOUT DANS BDD
+                $grosmot = array("Hitler","Zemmour","lepen","poutine","russie","ukraine");
+
+
+
+                // RENVOIE A L4ACCUEIL AVEC UN MESSAGE QUAND RESERVE AVEC UN PRENOM OU NOM INTERDIT
+               if ( in_array($client->getPrenom(),$grosmot)){
+                    return $this->render("bucket/index.html.twig", [
+                       "error"=>"IL TE FAUT UN PRENOM CORRECT, PETIT CON !"
+                   ]);
+
+               }
+                if ( in_array($client->getNom(),$grosmot)){
+                    return $this->render("bucket/index.html.twig", [
+                        "error"=>"IL TE FAUT UN NOM CORRECT, PETIT CON !"
+                    ]);
+
+                }
+
+                // CENSURE DES MOTS
+                $client->setPrenom($censure->purify($client->getPrenom()));
+                $client->setNom($censure->purify($client->getNom()));
+
                 $em->persist($client);
                 $em->flush();
                 $this->addFlash("Succes","Reservation Faite !");

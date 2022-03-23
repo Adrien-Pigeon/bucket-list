@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Offres;
+
 use App\Repository\ClientsRepository;
 use App\Repository\OffresRepository;
+use App\Service\Functions;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,6 +20,7 @@ class BucketController extends AbstractController
      */
     public function index(): Response
     {
+
         return $this->render('bucket/index.html.twig', [
             'controller_name' => 'BucketController',
         ]);

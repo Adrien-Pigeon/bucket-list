@@ -10,6 +10,7 @@
 
     <h1> Accueil </h1>
     <br><br>
+
     <div class="main">
         <h4>Bienvenue sur Bucket-Voyance !</h4>
 
@@ -19,19 +20,25 @@
     </div>
 
     <div class="texte">
-    <p>
-        Sur notre site, vous pouvez reservez une séance de voyance avec notre expert Antonin,
-        <br>virtuose de la voyance qui voyagera a travers l'espace et le temps pour répondre à vos demandes.
-    </p>
+        <p>
+            Sur notre site, vous pouvez reservez une séance de voyance avec notre expert Antonin,
+            <br>virtuose de la voyance qui voyagera a travers l'espace et le temps pour répondre à vos demandes.
+        </p>
 
-    <p>
-        N'hésitez pas à consulter notre listes d'offres dans l'onglet "Offres".
-        <br>Ainsi que le détail des séances dans l'onglet "Detail".
-        <br>Enfin pour réserver une séance, c'est dans l'onglet "Réservation Séance".
+        <p>
+            N'hésitez pas à consulter notre listes d'offres dans l'onglet "Offres".
+            <br>Ainsi que le détail des séances dans l'onglet "Detail".
+            <br>Enfin pour réserver une séance, c'est dans l'onglet "Réservation Séance".
 
-        <br><br>
-        Bonne journée à vous !
-    </p>
+            <br><br>
+            Bonne journée à vous !
+        </p>
+    </div>
+
+    <div class=" alert-danger error">
+        {% if error is defined %}
+            <p>{{ error }}</p>
+        {% endif %}
     </div>
 
 

@@ -12,7 +12,7 @@ security:
         app_user_provider:
             entity:
                 class: App\Entity\User
-                property: email
+                property: pseudo
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -24,7 +24,10 @@ security:
             logout:
                 path: app_logout
                 # where to redirect after logout
-                # target: app_any_route
+                target: app_bucket
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 250000
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall

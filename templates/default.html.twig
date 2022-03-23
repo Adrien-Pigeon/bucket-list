@@ -20,29 +20,42 @@
     </title>
 
 </head>
+
 <body>
 <div class="container">
     <div class="title">
         <img src="{{ asset('/img/logo.png') }}" alt="Symfony"/>
         <h1>Bucket-Voyance</h1>
     </div>
-    <nav class="navigation">
-        <a href="{{ path("app_login") }}">Connexion</a>
-        <a href="{{ path("app_register") }}">Inscription</a>
-        <a href="{{ path("app_logout") }}">Deconnexion</a>
+    <nav>
+
+
+        {% if app.user == false %}
+
+            <a href="{{ path('app_login') }}">Connexion</a>
+
+            <a href="{{ path('app_register') }}">Inscription</a>
+
+
+
+        {% endif %}
+        {% if app.user %}
+        <a href="{{ path('app_logout') }}">Deconnexion</a>
+        {% endif %}
     </nav>
     <header>
 
-        <nav class="navbar navbar-light" style="background-color: rgba(216,224,187,1)">
-            <a href="{{ path("app_bucket") }}">Accueil</a>
-            <a href="{{ path("app_aboutUs") }}">Offres </a>
-            <a href="{{ path("app_detail") }}">Detail</a>
+            <nav class="navbar navbar-light" style="background-color: rgba(216,224,187,1)">
+                <a href="{{ path("app_bucket") }}">Accueil</a>
+                <a href="{{ path("app_aboutUs") }}">Offres </a>
+                <a href="{{ path("app_detail") }}">Detail</a>
 
-            <a href="{{ path("app-listeClient") }}">Liste Réservation</a>
-            <a href="{{ path("app_clients") }}">Réservation Séance</a>
+                <a href="{{ path("app-listeClient") }}">Liste Réservation</a>
+                <a href="{{ path("app_clients") }}">Réservation Séance</a>
 
 
-        </nav>
+
+            </nav>
 
     </header>
 
